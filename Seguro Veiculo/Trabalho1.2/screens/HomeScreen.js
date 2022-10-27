@@ -11,7 +11,7 @@ import {
     TextInput,
     Button,
 } from 'react-native';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import SelectDropdown from 'react-native-select-dropdown';
 import Interesse from '../components/Interesse.js'
@@ -27,6 +27,8 @@ function HomeScreen({ navigation }) {
     const [mensagem, setMensagem] = useState('')
 
     const marcas = ["Toyota", "Volkswagen", "Mercedes", "Ford", "BMW", "Honda", "Nissan", "Chevrolet "]
+
+    const dropdownRef = useRef({})
 
     const salvar = async (avaliacoes) => {
         try {
@@ -51,7 +53,7 @@ function HomeScreen({ navigation }) {
     }, [])
 
 
-
+    
     const calcular = async () => {
         // faz o calculo
         let porcentagem = 3.9
@@ -73,133 +75,137 @@ function HomeScreen({ navigation }) {
     }
     const addAvaliacao = async () => {
 
-    const novo = {
-        nome: nome,
-        valor: valor,
-        marca: marca,
-        renovacao: renovacao,
+        const novo = {
+            nome: nome,
+            valor: valor,
+            marca: marca,
+            renovacao: renovacao,
+        }
+        // faz uma nova atribuição à lista, com os elementos
+        // já existentes (...lista) e o novo
+        setAvaliacao([...avaliacao, novo]);
+        salvar([...avaliacao, novo])
+        //console.log(avaliacao);
     }
-    // faz uma nova atribuição à lista, com os elementos
-    // já existentes (...lista) e o novo
-    setAvaliacao([...avaliacao, novo]);
-    salvar([...avaliacao, novo])
-}
 
-const novo = async () => {
-    setNome('');
-    setValor('');
-    setMarca(false);
-    setRenovacao(false)
-    setMensagem('');
-}
+    const novo = async () => {
+        setNome('');
+        setValor('');
+        setMarca(false);
+        setRenovacao(false)
+        setMensagem('');
+        dropdownRef.current.reset()
+    }
 
-return (
-    <SafeAreaView>
+    return (
+        <SafeAreaView>
 
-        <Header></Header>
-        <ScrollView
-            scrollEventThrottle={16}
-            onScroll={Animated.event([{
-                nativeEvent: {
-                    contentOffset: { y: scrollY }
-                },
-            }],
-                { useNativeDriver: false })}
-        >
-            <View style={styles.caixasTextos}>
+            <Header></Header>
+            <ScrollView
+                scrollEventThrottle={16}
+                onScroll={Animated.event([{
+                    nativeEvent: {
+                        contentOffset: { y: scrollY }
+                    },
+                }],
+                    { useNativeDriver: false })}
+            >
+                <View style={styles.caixasTextos}>
 
-                <Text style={styles.titulo}>Nome do Cliente</Text>
-                <TextInput
-                    value={nome}
-                    onChangeText={setNome}
-                    placeholder="Nome"
-                    style={styles.caixaTexto}
-                />
+                    <Text style={styles.titulo}>Nome do Cliente</Text>
+                    <TextInput
+                        value={nome}
+                        onChangeText={setNome}
+                        placeholder="Nome"
+                        style={styles.caixaTexto}
+                    />
 
-                <Text style={styles.titulo}>Marca</Text>
-                <SelectDropdown
-                    buttonStyle={styles.caixaTexto}
-                    data={marcas}
-                    value={marca}
-                    defaultButtonText={"Selecione a marca"}
-                    onChangeText={setMarca}
-                    placeholder="Marca"
-                    onSelect={(selectedItem, index) => {
-                        setMarca(selectedItem);
-                    }}
-                    buttonTextAfterSelection={(selectedItem, index) => {
-                        return selectedItem
-                    }}
-                    rowTextForSelection={(item, index) => {
+                    <Text style={styles.titulo}>Marca</Text>
+                    <SelectDropdown
+                        ref={dropdownRef}
+                        buttonStyle={styles.caixaTexto}
+                        data={marcas}
+                        value={marca}
+                        defaultButtonText={"Selecione a marca"}
+                        onChangeText={setMarca}
+                        placeholder="Marca"
+                        onSelect={(selectedItem, index) => {
+                            setMarca(selectedItem);
+                        }}
+                        buttonTextAfterSelection={(selectedItem, index) => {
+                            return selectedItem
+                        }}
+                        rowTextForSelection={(item, index) => {
 
-                        return item
-                    }}
-                />
+                            return item
+                        }}
+                    />
 
-                <Text style={styles.titulo}>Valor da Fipe em R$</Text>
-                <TextInput
+                    <Text style={styles.titulo}>Valor da Fipe em R$</Text>
+                    <TextInput
 
-                    keyboardType='numeric'
-                    value={valor}
-                    onChangeText={setValor}
-                    placeholder="Valor R$"
-                    style={styles.caixaTexto}
-
-                />
-
-                <View style={styles.renovacaoButton}>
-                    <BouncyCheckbox
-                        title="Renovação de Seguro"
-                        checkedIcon="check"
-                        uncheckedIcon="square-o"
-                        isChecked={renovacao}
-                        onPress={() => setRenovacao(!renovacao)}
-                        size={25}
-                        fillColor="black"
-                        innerIconStyle={{ borderWidth: 1 }}
+                        keyboardType='numeric'
+                        value={valor}
+                        onChangeText={setValor}
+                        placeholder="Valor R$"
+                        style={styles.caixaTexto}
 
                     />
-                    <Text>Renovação de Seguro</Text>
+
+                    <View style={styles.renovacaoButton}>
+                        <BouncyCheckbox
+                            disableBuiltInState
+                            title="Renovação de Seguro"
+                            checkedIcon="check"
+                            uncheckedIcon="square-o"
+                            isChecked={renovacao}
+                            onPress={() => setRenovacao(!renovacao)}
+                            size={25}
+                            fillColor="black"
+                            innerIconStyle={{ borderWidth: 1 }}
+
+                        />
+                        <Text>Renovação de Seguro</Text>
+                    </View>
+
                 </View>
+                <View style={styles.buttons}>
+                    <TouchableOpacity
+                        style={styles.button} onPress={calcular}>
+                        <Text
+                            style={styles.buttonText}>Calcular
+                        </Text>
+                    </TouchableOpacity>
 
-            </View>
-            <View style={styles.buttons}>
-                <TouchableOpacity
-                    style={styles.button} onPress={calcular}>
+                    <TouchableOpacity
+                        onPress={novo}
+                        style={styles.button}>
+                        <Text
+                            style={styles.buttonText}>Novo
+
+                        </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => navigation.navigate('Listar', { nome: nome, valor: valor, renovacao: renovacao, mensagem: mensagem })
+                    }
+                        style={styles.button}>
+                        <Text
+                            style={styles.buttonText}>Listar
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+                <Text style={styles.textRegistrar} onPress={novo}>{mensagem}</Text>
+                {mensagem && <TouchableOpacity
+                    style={styles.buttonRegistrar} onPress={addAvaliacao}>
                     <Text
-                        style={styles.buttonText}>Calcular
+                        style={styles.buttonText}>Registrar Interesse
                     </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    onPress={novo}
-                    style={styles.button}>
-                    <Text
-                        style={styles.buttonText}>Novo
-
-                    </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={() => navigation.navigate('Listar', { nome: nome, valor: valor, renovacao: renovacao, mensagem: mensagem })
-                }
-                    style={styles.button}>
-                    <Text
-                        style={styles.buttonText}>Listar
-                    </Text>
-                </TouchableOpacity>
-            </View>
-            <Text style={styles.textRegistrar} onPress={novo}>{mensagem}</Text>
-            {mensagem && <TouchableOpacity
-                style={styles.buttonRegistrar} onPress={addAvaliacao}>
-                <Text
-                    style={styles.buttonText}>Registrar Interesse
-                </Text>
-            </TouchableOpacity>}
+                </TouchableOpacity>}
 
 
-        </ScrollView>
-    </SafeAreaView>
-);
+            </ScrollView>
+        </SafeAreaView>
+    );
 }
 export default HomeScreen
 
@@ -224,7 +230,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     caixaTexto: {
-        fontSize: 15,
+        fontSize: 17,
         backgroundColor: '#DDD',
         padding: 10,
         margin: 10,
@@ -249,17 +255,19 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         elevation: 2,
         borderRadius: 40,
-
     },
     buttonRegistrar: {
         backgroundColor: '#101010',
         padding: 10,
         marginTop: 10,
         borderRadius: 40,
+        width: 150,
+        marginLeft: 130
     },
     buttonText: {
         color: '#FFF',
         fontSize: 15,
+        textAlign: 'center',
     },
     renovacaoButton: {
         checkedIcon: "check",
@@ -282,5 +290,11 @@ const styles = StyleSheet.create({
         height: "100%",
         width: "100%"
 
-    }
+    },
+    textRegistrar: {
+        textAlign: "center",
+        fontSize: 20,
+    },
+
+
 });
