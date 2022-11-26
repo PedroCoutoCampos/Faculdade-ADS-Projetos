@@ -1,0 +1,141 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "nome": "Pedro",
+      "email": "pedro@gmail.com",
+      "password": "12345"
+    }
+  ],
+  "armas": [
+    {
+      "id": 1,
+      "nome": "Glock",
+      "modelo": "G23",
+      "calibre": "40mm",
+      "foto": "https://us.glock.com/en/-/media/Global/US/old/US-Products/G23_Gen3-107.ashx"
+    },
+    {
+      "id": 2,
+      "nome": "Tauros",
+      "modelo": "917C",
+      "calibre": "9mm",
+      "foto": "https://www.triestina.com.ar/wp-content/uploads/2017/04/taurus_pt917.png"
+    },
+    {
+      "id": 3,
+      "nome": "Tauros",
+      "modelo": "G2C",
+      "calibre": "9mm",
+      "foto": "https://www.extremosulaventura.com.br/media/catalog/product/cache/1/image/800x/9df78eab33525d08d6e5fb8d27136e95/p/r/product-242-photo-6.png"
+    },
+    {
+      "id": 4,
+      "nome": "Tauros",
+      "modelo": "TS9",
+      "calibre": "50",
+      "foto": "https://www.extremosulaventura.com.br/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/p/r/product-247-photo-3.png"
+    },
+    {
+      "id": 5,
+      "nome": "Bersa",
+      "modelo": "TPR9C",
+      "calibre": "9mm",
+      "foto": "https://cdn11.bigcommerce.com/s-1kqh9qmybo/images/stencil/1280x1280/products/61622/150299/091664960687__71530.1575708182.png?c=2"
+    },
+    {
+      "id": 6,
+      "nome": "Arex",
+      "modelo": "ZERO 1",
+      "calibre": "9mm",
+      "foto": "https://fflone.com/app/uploads/sites/4/2020/01/109701_A.png"
+    },
+
+    {
+      "id": 7,
+      "nome": "Arex",
+      "modelo": "DELTA",
+      "calibre": "9mm",
+      "foto": "https://img.handgunhero.com/live/handgun/335780/c/arex-defence-delta-l-left-lg-1024.png"
+    }
+  ],
+  "opinioes_salvas": [
+    {
+      "id_usuario": 1,
+      "id_arma": 1,
+      "opiniao": "Otima",
+      "estrelas": "4",
+      "id": 1
+    },
+    {
+      "id_usuario": 1,
+      "id_arma": 2,
+      "opiniao": "Indestrutivel",
+      "estrelas": "5",
+      "id": 2
+    },
+    {
+      "id_usuario": 1,
+      "id_arma": 3,
+      "opiniao": "Estraga Fácil",
+      "estrelas": "2",
+      "id": 3
+    },
+    {
+      "id_usuario": 1,
+      "id_arma": 2,
+      "opiniao": "Material ruim",
+      "estrelas": "2",
+      "id": 4
+    },
+    {
+      "id_usuario": 1,
+      "id_arma": 2,
+      "opiniao": "Especial",
+      "estrelas": "5",
+      "id": 5
+    },
+    {
+      "id_usuario": 1,
+      "id_arma": 1,
+      "opiniao": "Muito boa",
+      "estrelas": "4",
+      "id": 6
+    },
+    {
+      "id_usuario": 1,
+      "id_arma": 1,
+      "opiniao": "Ruim",
+      "estrelas": "5",
+      "id": 7
+    },
+    {
+      "id_usuario": 1,
+      "id_arma": 1,
+      "opiniao": "Empunhadura ruim",
+      "estrelas": "1",
+      "id": 8
+    },
+    {
+      "id_usuario": 1,
+      "id_arma": 2,
+      "opiniao": "Otima para uso domestico",
+      "estrelas": "4",
+      "id": 9
+    },
+    {
+      "id_usuario": 1,
+      "id_arma": 4,
+      "opiniao": "Excelente",
+      "estrelas": "5",
+      "id": 10
+    },
+    {
+      "id_usuario": 1,
+      "id_arma": 4,
+      "opiniao": "Muito Boa pra o dia a dia",
+      "estrelas": "5",
+      "id": 11
+    }
+  ]
+}
