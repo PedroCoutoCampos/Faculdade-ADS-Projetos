@@ -43,7 +43,7 @@ const CadastroOpiniao = ({ route, navigation }) => {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify({
-        id_usuario: dados[0].id,
+        id_usuario: dados[0].nome,
         id_arma: id_arma,
         opiniao: opiniao,
         estrelas: estrelas,

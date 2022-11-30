@@ -9,6 +9,7 @@ const CaixaOpinioes = ({ data }) => {
       <View style={styles.boxCard}>
         <Text>Opinião: {data.opiniao}</Text>
         <Text>Estrelas: {data.estrelas}</Text>
+        <Text>Nome do Usuario: {data.id_usuario}</Text>
       </View>
     </TouchableOpacity>
   );

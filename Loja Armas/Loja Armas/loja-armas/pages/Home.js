@@ -26,7 +26,7 @@ const Home = ({ navigation }) => {
   }, []);
 
   const handleSelectMarket = (id) => {
-    navigation.navigate('Exposure', { id_arma: id });
+    navigation.navigate('Armas', { id_arma: id });
   };
   const dataAtt = data.filter((data) => data.nome.includes(dadosFilter));
   const usuarioLogout = () => {

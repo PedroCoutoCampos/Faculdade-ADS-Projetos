@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Button, StyleSheet, TextInput } from 'react-native';
 import Input from '../components/Input';
 import { GlobalContext } from '../context';
+import axios from 'axios';
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = React.useState('');
@@ -9,20 +10,42 @@ const Login = ({ navigation }) => {
   const [error, setError] = React.useState('');
 
   const { setDados } = React.useContext(GlobalContext);
-
+  const baseUrl = "http://localhost:3000"
+  
   const handleValidateLogin = async () => {
-    const response = await fetch(`http://localhost:3000/user?email=${email}`);
-    const data = await response.json();
-
-    if (data && data[0]?.password === password) {
-      setDados(data);
-      navigation.navigate('Home');
-      setEmail('');
-      setPassword('');
-      setError('');
-    } else {
-      setError('Usuário ou Senha Inválidos');
+    //const response = await fetch(`http://localhost:3000/user?email=${email}`);
+    //const data = await response.json();
+    const url = `${baseUrl}/user?email=${email}&password=${password}`;
+    try {
+      const response = await fetch(url);
+      if (response.status === 200) {
+        if (response.data.length == 1) {
+          setDados(data);
+          setEmail('');
+          setPassword('');
+          setError('');
+          navigation.reset({
+            index: 0,
+            routes: [{ name: 'Home' }],
+          });
+        } else {
+          alert('Erro... Login ou senha inválida');
+        }
+      } else {
+        throw new Error('Erro...');
+      }
+    } catch (error) {
+      alert('Operação cancelada...');
     }
+    // if (data && data[0]?.password === password) {
+    //   setDados(data);
+    //   navigation.navigate('Home');
+    //   setEmail('');
+    //   setPassword('');
+    //   setError('');
+    // } else {
+    //   setError('Usuário ou Senha Inválidos');
+    // }
   };
   return (
     <View style={styles.container}>

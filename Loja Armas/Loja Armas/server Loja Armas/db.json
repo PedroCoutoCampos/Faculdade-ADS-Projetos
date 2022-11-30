@@ -50,7 +50,6 @@
       "calibre": "9mm",
       "foto": "https://fflone.com/app/uploads/sites/4/2020/01/109701_A.png"
     },
-
     {
       "id": 7,
       "nome": "Arex",
@@ -61,81 +60,32 @@
   ],
   "opinioes_salvas": [
     {
-      "id_usuario": 1,
-      "id_arma": 1,
-      "opiniao": "Otima",
-      "estrelas": "4",
+      "id_usuario": "Pedro",
+      "id_arma": 2,
+      "opiniao": "Empunhadura Ruim",
+      "estrelas": "2",
       "id": 1
     },
     {
-      "id_usuario": 1,
-      "id_arma": 2,
-      "opiniao": "Indestrutivel",
+      "id_usuario": "Pedro",
+      "id_arma": 1,
+      "opiniao": "Muito Boa a Curta Distancia",
       "estrelas": "5",
       "id": 2
     },
     {
-      "id_usuario": 1,
-      "id_arma": 3,
-      "opiniao": "Estraga Fácil",
-      "estrelas": "2",
+      "id_usuario": "Pedro",
+      "id_arma": 2,
+      "opiniao": "Muito boa",
+      "estrelas": "5",
       "id": 3
     },
     {
-      "id_usuario": 1,
-      "id_arma": 2,
-      "opiniao": "Material ruim",
-      "estrelas": "2",
-      "id": 4
-    },
-    {
-      "id_usuario": 1,
-      "id_arma": 2,
-      "opiniao": "Especial",
-      "estrelas": "5",
-      "id": 5
-    },
-    {
-      "id_usuario": 1,
-      "id_arma": 1,
-      "opiniao": "Muito boa",
-      "estrelas": "4",
-      "id": 6
-    },
-    {
-      "id_usuario": 1,
-      "id_arma": 1,
-      "opiniao": "Ruim",
-      "estrelas": "5",
-      "id": 7
-    },
-    {
-      "id_usuario": 1,
-      "id_arma": 1,
-      "opiniao": "Empunhadura ruim",
+      "id_usuario": "Pedro",
+      "id_arma": 3,
+      "opiniao": "PEssima",
       "estrelas": "1",
-      "id": 8
-    },
-    {
-      "id_usuario": 1,
-      "id_arma": 2,
-      "opiniao": "Otima para uso domestico",
-      "estrelas": "4",
-      "id": 9
-    },
-    {
-      "id_usuario": 1,
-      "id_arma": 4,
-      "opiniao": "Excelente",
-      "estrelas": "5",
-      "id": 10
-    },
-    {
-      "id_usuario": 1,
-      "id_arma": 4,
-      "opiniao": "Muito Boa pra o dia a dia",
-      "estrelas": "5",
-      "id": 11
+      "id": 4
     }
   ]
 }
